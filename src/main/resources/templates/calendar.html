@@ -4,8 +4,24 @@
     <title>Фитнес Трекер</title>
     <style>
         .calendar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+        .month {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 10px;
+        }
+        .month-label {
+            font-size: 12px;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        .days {
             display: grid;
-            grid-template-columns: repeat(53, 1fr);
+            grid-template-columns: repeat(7, 1fr);
             gap: 2px;
         }
         .day {
@@ -22,9 +38,20 @@
 <h1>Календарь тренировок</h1>
 
 <div class="calendar">
-    <th:block th:each="dayOfYear : ${#numbers.sequence(1, 365)}">
-        <div th:with="currentDate=${#temporals.create(currentYear, 1, 1).plusDays(dayOfYear - 1)}"
-             th:class="${workouts.contains(currentDate) ? 'day workout' : 'day'}"></div>
+    <th:block th:each="month : ${#numbers.sequence(1, 12)}">
+        <div class="month">
+            <div class="month-label" th:text="${#temporals.format(#temporals.create(currentYear, month, 1), 'MMM')}"></div>
+            <div class="days">
+                <th:block th:with="firstDay=${#temporals.create(currentYear, month, 1)},
+                                   lastDay=${#temporals.create(currentYear, month, 1).plusMonths(1).minusDays(1)}">
+                    <th:block th:each="day : ${#numbers.sequence(1, lastDay.dayOfMonth)}">
+                        <div th:with="currentDate=${#temporals.create(currentYear, month, day)}"
+                             th:class="${workouts.contains(currentDate) ? 'day workout' : 'day'}"
+                             th:title="${#temporals.format(currentDate, 'yyyy-MM-dd')}"></div>
+                    </th:block>
+                </th:block>
+            </div>
+        </div>
     </th:block>
 </div>
 
