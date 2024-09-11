@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Фитнес Трекер</title>
+    <style>
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(53, 1fr);
+            gap: 2px;
+        }
+        .day {
+            width: 10px;
+            height: 10px;
+            background-color: #ebedf0;
+        }
+        .workout {
+            background-color: #196127;
+        }
+    </style>
+</head>
+<body>
+<h1>Календарь тренировок</h1>
+
+<div class="calendar">
+    <th:block th:each="dayOfYear : ${#numbers.sequence(1, 365)}">
+        <div th:with="currentDate=${#temporals.create(currentYear, 1, 1).plusDays(dayOfYear - 1)}"
+             th:class="${workouts.contains(currentDate) ? 'day workout' : 'day'}"></div>
+    </th:block>
+</div>
+
+<h2>Добавить тренировку</h2>
+<form action="/add-workout" method="post">
+    <input type="date" name="date" required>
+    <button type="submit">Добавить</button>
+</form>
+</body>
+</html>
