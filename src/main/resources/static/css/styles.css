@@ -2,34 +2,27 @@ body {
     font-family: Arial, sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-h1, h2 {
-    text-align: center;
 }
 
 .calendar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 100%;
 }
 
 .row {
     display: flex;
-    justify-content: center;
-    width: 100%;
+    flex-wrap: wrap;
+}
+
+.col {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+    padding: 5px;
+    box-sizing: border-box;
 }
 
 .month {
-    margin: 10px;
     text-align: center;
+    margin-bottom: 15px;
 }
 
 .month-label {
@@ -40,12 +33,11 @@ h1, h2 {
 .days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 2px;
+    gap: 1px;
 }
 
 .day {
-    width: 20px;
-    height: 20px;
+    aspect-ratio: 1 / 1;
     background-color: #ebedf0;
     display: flex;
     align-items: center;
@@ -58,31 +50,16 @@ h1, h2 {
     color: white;
 }
 
-form {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-input[type="date"], button {
-    font-size: 16px;
-    padding: 10px;
-    margin: 5px;
-    height: 40px;
-    box-sizing: border-box;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    line-height: 20px;
-}
-
-input[type="date"] {
-    height: 40px;
-    box-sizing: border-box;
+@media (max-width: 767.98px) {
+    .day {
+        font-size: 8px;
+    }
+    
+    .calendar {
+        font-size: 12px;
+    }
+    
+    .month-label {
+        font-size: 14px;
+    }
 }
