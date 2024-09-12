@@ -4,19 +4,27 @@ body {
     line-height: 1.5;
 }
 
-h3 {
-    margin: 20px 0 10px;
+h4 {
+    margin: 20px 0 0 0;
 }
 
 .calendar {
     max-width: 60.8%;
     margin: 0 auto;
+
+    @media (max-width: 991.98px) {
+        max-width: 100%;
+    }
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
     margin: -3px;
+
+    @media (max-width: 767.98px) {
+        margin: 0;
+    }
 }
 
 .col {
@@ -24,11 +32,24 @@ h3 {
     max-width: 25%;
     padding: 3px;
     box-sizing: border-box;
+
+    @media (max-width: 991.98px) {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+    }
+
+    @media (max-width: 767.98px) {
+        padding: 2px;
+    }
 }
 
 .month {
     text-align: center;
     margin-bottom: 7px;
+
+    @media (max-width: 767.98px) {
+        margin-bottom: 5px;
+    }
 }
 
 .month-label {
@@ -36,6 +57,10 @@ h3 {
     margin-bottom: 2px;
     font-size: 15px;
     color: #8a8a8a;
+
+    @media (max-width: 767.98px) {
+        font-size: 12px;
+    }
 }
 
 .days {
@@ -51,61 +76,32 @@ h3 {
     position: relative;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
 
-.day::before {
-    content: attr(data-day);
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2vmin;
-    line-height: 1;
-}
+    &:hover {
+        background-color: #d0d0d0;
+    }
 
-.day:hover {
-    background-color: #d0d0d0;
+    &::before {
+        content: attr(data-day);
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2vmin;
+        line-height: 1;
+
+        @media (max-width: 991.98px) {
+            font-size: 3vmin;
+        }
+
+        @media (max-width: 767.98px) {
+            font-size: 4vmin;
+        }
+    }
 }
 
 .workout {
     background-color: #4CAF50;
     color: white;
-}
-
-@media (max-width: 991.98px) {
-    .calendar {
-        max-width: 100%;
-    }
-
-    .col {
-        flex: 0 0 33.333%;
-        max-width: 33.333%;
-    }
-
-    .day::before {
-        font-size: 3vmin;
-    }
-}
-
-@media (max-width: 767.98px) {
-    .row {
-        margin: 0;
-    }
-
-    .col {
-        padding: 2px;
-    }
-
-    .month {
-        margin-bottom: 5px;
-    }
-
-    .month-label {
-        font-size: 12px;
-    }
-
-    .day::before {
-        font-size: 4vmin;
-    }
 }
