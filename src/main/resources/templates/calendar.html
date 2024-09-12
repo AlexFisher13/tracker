@@ -5,30 +5,34 @@
     <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-<h1>Календарь тренировок</h1>
+<h1>Fitness calendar</h1>
 
 <div class="calendar">
-    <th:block th:each="month : ${#numbers.sequence(1, 12)}">
-        <div class="month">
-            <div class="month-label" th:text="${#temporals.format(#temporals.create(currentYear, month, 1), 'MMM')}"></div>
-            <div class="days">
-                <th:block th:with="firstDay=${#temporals.create(currentYear, month, 1)},
-                                   lastDay=${#temporals.create(currentYear, month, 1).plusMonths(1).minusDays(1)}">
-                    <th:block th:each="day : ${#numbers.sequence(1, lastDay.dayOfMonth)}">
-                        <div th:with="currentDate=${#temporals.create(currentYear, month, day)}"
-                             th:class="${workouts.contains(currentDate) ? 'day workout' : 'day'}"
-                             th:title="${#temporals.format(currentDate, 'yyyy-MM-dd')}"></div>
-                    </th:block>
-                </th:block>
-            </div>
-        </div>
-    </th:block>
+    <div class="row" th:each="row : ${#numbers.sequence(0, 2)}">
+        <th:block th:each="col : ${#numbers.sequence(0, 3)}">
+            <th:block th:with="month=${row * 4 + col + 1}">
+                <div class="month" th:if="${month <= 12}">
+                    <div class="month-label" th:text="${#temporals.format(#temporals.create(currentYear, month, 1), 'MMM')}"></div>
+                    <div class="days">
+                        <th:block th:with="firstDay=${#temporals.create(currentYear, month, 1)},
+                                           lastDay=${#temporals.create(currentYear, month, 1).plusMonths(1).minusDays(1)}">
+                            <th:block th:each="day : ${#numbers.sequence(1, lastDay.dayOfMonth)}">
+                                <div th:with="currentDate=${#temporals.create(currentYear, month, day)}"
+                                     th:class="${workouts.contains(currentDate) ? 'day workout' : 'day'}"
+                                     th:title="${#temporals.format(currentDate, 'yyyy-MM-dd')}"></div>
+                            </th:block>
+                        </th:block>
+                    </div>
+                </div>
+            </th:block>
+        </th:block>
+    </div>
 </div>
 
-<h2>Добавить тренировку</h2>
 <form action="/add-workout" method="post">
     <input type="date" name="date" required>
-    <button type="submit">Добавить</button>
+    <button type="submit">Add</button>
 </form>
+
 </body>
 </html>
