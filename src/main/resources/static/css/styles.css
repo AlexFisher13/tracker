@@ -1,0 +1,29 @@
+.calendar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+.month {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+}
+.month-label {
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+.day {
+    width: 10px;
+    height: 10px;
+    background-color: #ebedf0;
+}
+.workout {
+    background-color: #196127;
+}
