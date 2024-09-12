@@ -5,29 +5,32 @@ body {
 }
 
 .calendar {
-    max-width: 100%;
+    max-width: 80%;
+    margin: 0 auto;
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
+    margin: -5px; /* Отрицательный отступ для компенсации padding колонок */
 }
 
 .col {
-    flex: 0 0 33.333%;
-    max-width: 33.333%;
+    flex: 0 0 25%;
+    max-width: 25%;
     padding: 5px;
     box-sizing: border-box;
 }
 
 .month {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .month-label {
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
+    font-size: 14px;
 }
 
 .days {
@@ -42,7 +45,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 10px;
 }
 
 .workout {
@@ -50,16 +53,37 @@ body {
     color: white;
 }
 
-@media (max-width: 767.98px) {
-    .day {
-        font-size: 8px;
-    }
-    
+@media (max-width: 991.98px) {
     .calendar {
+        max-width: 100%;
+    }
+
+    .col {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .row {
+        margin: 0;
+    }
+
+    .col {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+        padding: 2px;
+    }
+
+    .month {
+        margin-bottom: 5px;
+    }
+
+    .month-label {
         font-size: 12px;
     }
-    
-    .month-label {
-        font-size: 14px;
+
+    .day {
+        font-size: 8px;
     }
 }
