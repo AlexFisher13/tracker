@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="text-center my-4">Fitness calendar</h1>
+    <h3 class="text-center">Fitness calendar</h3>
 
     <div class="calendar">
         <div class="row row-cols-1 row-cols-sm-3 g-4">
@@ -22,7 +22,8 @@
                                 <th:block th:each="day : ${#numbers.sequence(1, lastDay.dayOfMonth)}">
                                     <div th:with="currentDate=${#temporals.create(currentYear, month, day)}"
                                          th:class="${workouts.contains(currentDate) ? 'day workout' : 'day'}"
-                                         th:title="${#temporals.format(currentDate, 'yyyy-MM-dd')}"></div>
+                                         th:title="${#temporals.format(currentDate, 'yyyy-MM-dd')}"
+                                         th:attr="data-day=${day}"></div>
                                 </th:block>
                             </th:block>
                         </div>
