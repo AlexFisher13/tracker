@@ -5,36 +5,37 @@ body {
 }
 
 h3 {
-    margin: 20px 0 10px 0;
+    margin: 20px 0 10px;
 }
 
 .calendar {
-    max-width: 60.8%; /* Уменьшено с 64% на 5% */
+    max-width: 60.8%;
     margin: 0 auto;
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin: -3px; /* Уменьшено с -4px */
+    margin: -3px;
 }
 
 .col {
     flex: 0 0 25%;
     max-width: 25%;
-    padding: 3px; /* Уменьшено с 4px */
+    padding: 3px;
     box-sizing: border-box;
 }
 
 .month {
     text-align: center;
-    margin-bottom: 7px; /* Уменьшено с 8px */
+    margin-bottom: 7px;
 }
 
 .month-label {
     font-weight: bold;
-    margin-bottom: 2px; /* Уменьшено с 3px */
-    font-size: 11px; /* Уменьшено с 12px */
+    margin-bottom: 2px;
+    font-size: 15px;
+    color: #8a8a8a;
 }
 
 .days {
@@ -46,26 +47,18 @@ h3 {
 .day {
     aspect-ratio: 1 / 1;
     background-color: #ebedf0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #dadada; /* Добавлен неяркий цвет для дат */
-    font-size: 0; /* Изменено на 0, чтобы скрыть оригинальный текст */
-    position: relative; /* Добавлено */
-    padding: 0;
+    color: #dadada;
+    position: relative;
 }
 
 .day::before {
     content: attr(data-day);
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5vmin; /* Изменено для максимального размера */
+    font-size: 2vmin;
     line-height: 1;
 }
 
@@ -85,7 +78,7 @@ h3 {
     }
 
     .day::before {
-        font-size: 2vmin; /* Увеличенный размер для планшетов */
+        font-size: 3vmin;
     }
 }
 
@@ -95,8 +88,6 @@ h3 {
     }
 
     .col {
-        flex: 0 0 33.333%;
-        max-width: 33.333%;
         padding: 2px;
     }
 
@@ -109,6 +100,6 @@ h3 {
     }
 
     .day::before {
-        font-size: 3vmin; /* Увеличенный размер для мобильных устройств */
+        font-size: 4vmin;
     }
 }
